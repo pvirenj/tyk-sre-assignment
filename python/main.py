@@ -50,7 +50,7 @@ def check_deployment_replicas(api_client):
 
         if desired_replicas != available_replicas:
             logger.warning(f"Deployment {name} in namespace {namespace} is not healthy.")
-            logger.info(f"Desired replicas: {desired_replicas}, Available replicas: {available_replicas}")
+            logger.warning(f"Desired replicas: {desired_replicas}, Available replicas: {available_replicas}")
             all_deployments_healthy = False
         #else:
         #    logger.info(f"Deployment {name} in namespace {namespace} is healthy. Desired replicas: {desired_replicas}, Available replicas: {available_replicas}")
