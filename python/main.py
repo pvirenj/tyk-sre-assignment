@@ -14,7 +14,7 @@ from app import app
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-
+# TASK-3 - Health Checking K8s API server
 def check_k8s_api_health(api_client):
     """
     Periodically checks and logs the K8s api server health.
@@ -27,7 +27,7 @@ def check_k8s_api_health(api_client):
             logger.error("Kubernetes API server health check failed: %s", e)
         time.sleep(5) #checks every 5s.
 
-
+# TASK-1 - Checking deployment available replica count are machted with desired replica defined in spec. 
 def check_deployment_replicas(api_client):
     """
     Check the replicas health of deployment in the cluster in all the namespaces 
