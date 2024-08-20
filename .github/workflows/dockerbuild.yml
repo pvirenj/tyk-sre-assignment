@@ -22,11 +22,10 @@ jobs:
       - name: Execute python tests
         run: |
           pwd
-          cd ./python
-          ls
+          cd ./python 
           #python -m pip install --upgrade pip
-          #python install -r requirements.txt
-          #python tests.py -v
+          python install -r requirements.txt
+          python tests.py -v
 
       - name: build the docker image
         uses: docker/build-push-action@v6
