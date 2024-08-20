@@ -1,0 +1,25 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  buildimage:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: build the docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: virenpatel/sretool:0.1.0
+
+
+

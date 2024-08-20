@@ -85,6 +85,14 @@ if __name__ == "__main__":
 
     api_client = client.ApiClient()
 
+    try:
+        version = app.get_kubernetes_version(api_client)
+    except Exception as e:
+        print(e)
+        sys.exit(1)
+
+    print("Connected to Kubernetes {}".format(version))
+
     # the Kubernetes API server health check thread
     health_check_thread = threading.Thread(target=check_k8s_api_health, args=(api_client,))
     health_check_thread.daemon = True
@@ -95,14 +103,6 @@ if __name__ == "__main__":
     deployment_replica_count_check.daemon = True
     deployment_replica_count_check.start()
 
-    try:
-        version = app.get_kubernetes_version(api_client)
-    except Exception as e:
-        print(e)
-        sys.exit(1)
-
-    print("Connected to Kubernetes {}".format(version))
-    
     #if args.check_deployments:
     #    check_deployment_replicas(api_client)
 
